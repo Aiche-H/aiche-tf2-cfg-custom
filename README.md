@@ -48,8 +48,8 @@ A modular Team Fortress 2 configuration designed to maximize performance, stabil
 
 ## 🛠 Customization
 
-* **Editing Binds**: Primary controls should be edited within the files located in `cfg/_my_configs/` to avoid conflicts.
-* **Troubleshooting**: If a bind isn't working, check the console (`~`) for any red text indicating a missing file or syntax error.
+* **Editing Binds**: Primary controls should be edited in `cfg/_my_configs/binds.cfg` to avoid conflicts.
+* **Troubleshooting**: If a bind isn't working, check the console in game for any red text indicating a missing file or syntax error.
 
 ---
 
