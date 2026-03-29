@@ -1,72 +1,80 @@
-# 🛠️ TF2 Custom Config: Technical Readme
-## 🛠️ User Instructions: Steam Launch Options
+# Aiche's Custom TF2 Configuration
 
-To ensure this configuration works perfectly, right-click **Team Fortress 2** in Steam → **Properties** → **Launch Options** and paste the following settings:
+A modular Team Fortress 2 configuration designed to maximize performance, stabilize network connectivity, and provide advanced scripting. This setup organizes settings into distinct folders for a cleaner, more manageable directory structure.
 
-### 🚀 General (Performance & FX)
-```text
--novid -nojoy -nosteamcontroller -nohltv -preload -console -particles 1 -softparticlesdefaultoff
-```
+## 📁 Repository Structure
 
-### 🐧 Extra (Linux / Steam Deck)
-```text
-gamemoderun %command% -vulkan
-```
+* **cfg/**: The engine of the configuration.
+    * **autoexec.cfg**: The master file that loads everything else on startup.
+    * **_my_configs/**: A dedicated subfolder containing your core logic (Binds, Graphics, Network, etc.).
+    * **[class].cfg files** Individual files for each of the nine classes (e.g., `scout.cfg`, `medic.cfg`).
+* **custom/**: Houses all external modifications, including custom sounds, assets, and HUD files.
 
-### 🪟 Extra (Windows Performance)
-```text
--dxlevel 81
-```
+---
 
-### ⚠️ Important Particle Note
-If you are **NOT** using an "Invisible Explosion / Muzzle Flash" mod, `-particles 1` may cause default explosions to look glitchy or square.
+## ✨ Key Features
 
-**The Fix:** Change `-particles 1` to `-particles 512` in your launch options.
+* **Modular Organization**: Easily toggle or edit specific parts of your setup without breaking the whole config.
+* **Null-Cancelling Movement**: Removes the "stop" penalty when hitting A and D simultaneously, making strafing feel significantly more responsive.
+* **Class-Specific Enhancements**: Each class has unique scripts (like Medic radars or Engineer quick-builds). **Check the individual `[class].cfg` files in `tf/cfg/` to see the specific binds and features for each class.**
+* **Optimized Netcode**: Pre-configured for low-latency environments to ensure what you see matches the server.
 
-This configuration uses a **Modular Architecture**. Settings are split into three layers: **Logic** (how it works), **Binds** (what keys do it), and **Reset** (cleaning up between classes).
+---
 
-## 📂 File Structure & Locations
-All custom files are located in `tf/cfg/_my_configs/` except for the `autoexec.cfg` and class files.
+## 🚀 Installation
 
-| File | Purpose | Location |
-| :--- | :--- | :--- |
-| `autoexec.cfg` | The Master Loader (Runs at startup) | `/tf/cfg/` |
-| `scripts.cfg` | Core Logic (Null-movement, Jump scripts) | `/tf/cfg/_my_configs/` |
-| `binds.cfg` | Universal Keybinds (WASD, Mouse, etc.) | `/tf/cfg/_my_configs/` |
-| `reset.cfg` | The Janitor (Wipes class-specific mods) | `/tf/cfg/_my_configs/` |
-| `[class].cfg` | Class-specific tricks (Spy/Engie/Pyro) | `/tf/cfg/` |
+* **Download**: Download the repository as a ZIP or clone it.
+* **Locate Game Files**: Navigate to your Team Fortress 2 directory:
+    `...\Steam\steamapps\common\Team Fortress 2\tf\`
+* **Merge Folders**: Extract the ZIP and copy the **cfg** and **custom** folders directly into your `tf/` folder.
+* **Overwrite**: If prompted, select "Yes" to merge or overwrite existing files.
+* **Launch Options**: Add these to your Steam Launch Options (Properties > General > Launch Options):
+* **Linux / Steam Deck**
+  `gamemoderun %command% -vulkan -novid -nojoy -nosteamcontroller -nohltv -preload -console -particles 1 -softparticlesdefaultoff`
+* **Windows**
+  `-dxlevel 81 -novid -nojoy -nosteamcontroller -nohltv -preload -console -particles 1 -softparticlesdefaultoff`
+* If you don't want to use the `no_explosion.vpk` mod, `-particles 1` may cause default explosions to look glitchy or square.
+  **The Fix:** Change `-particles 1` to `-particles 512` in your launch options.
 
-## ⌨️ Universal Binds (`binds.cfg`)
-*To change these, edit `_my_configs/binds.cfg`.*
+---
 
-* **WASD:** Null-Cancelling Movement (Prevents sticking).
-* **SPACE:** Crouch-Jump (Jumps and ducks simultaneously).
-* **CTRL:** Manual Duck.
-* **MOUSE1:** Primary Attack.
-* **V:** Quick-Melee (Swaps to slot 3 and attacks as long as you hold the button down swaps to last used weapon on release).
-* **TAB:** Scoreboard + Netgraph (Shows FPS and Network ping).
-* **F8:** Panic Fix (Reloads HUD, Sound, and Graphics if bugged).
-* **E, R, Z, X, C, F:** Tactical Shotcalling (Medic, Thanks, Spy!, Sentry!, Push!, Uber!).
+## ⚠️ Important Notes
 
-## 🧼 The Reset System (`reset.cfg`)
-Every time you switch classes, the game runs reset.cfg first. This is crucial because it prevents "bind bleeding" ensuring that a specialized script for the Engineer (like a sentry-build bind) doesn't accidentally stay active when you switch to Scout. It forces the game into a "Clean Slate" before applying class-specific tricks.
+* **Clean Installation Required**: It is highly recommended to have a clean TF2 installation before applying this configuration to avoid conflicts with old scripts.
+* **Mod Compatibility**: No testing has been performed to ensure functionality with other mods. Use alongside other major overhauls (like mastercomfig or heavy hud mods) at your own risk.
+* **Class Resets**: This config uses a reset method to ensure that class-specific binds don't carry over when you switch to a different class.
 
-## 🛠️ How to Add New Custom Scripts
-To keep this configuration stable and easy to troubleshoot, follow this **3-Step Rule** when adding new features or "tricks."
+---
 
-### 1. General Scripts (Available for ALL Classes)
-If you want to add a script that works for every class (like a Null-Movement script, a Crouch-Jump script, or a specialized Scoreboard):
-* **Step A:** Open `_my_configs/scripts.cfg` and define your `alias` logic there.
-* **Step B:** Open `_my_configs/binds.cfg` and `bind` a key to that new alias.
-* **Why?** This ensures the logic is always loaded in the background, and the key is always active.
+## 🛠 Customization
 
-### 2. Class-Specific Scripts (Only for Spy, Engie, etc.)
-If you have a script that only makes sense for one class (like a Sentry-Jump for Engie or a Medigun-Mask for Medic):
-* **The Rule:** Put **all** the logic AND the binds directly inside that `[class].cfg` (e.g., `engineer.cfg`).
-* **Why?** Because `reset.cfg` runs every time you change classes, it will wipe those special binds so they don't interfere with your other classes.
+* **Editing Binds**: Primary controls should be edited within the files located in `cfg/_my_configs/` to avoid conflicts.
+* **Troubleshooting**: If a bind isn't working, check the console (`~`) for any red text indicating a missing file or syntax error.
 
-### 3. Modifying Existing Binds
-If you just want to change a key:
-* **Only Edit:** `_my_configs/binds.cfg`.
-* **Crucial:** Do **not** change keys in the `autoexec.cfg`. The `binds.cfg` is the master source of truth for your controls.
+---
 
+## 🗑️ Uninstallation
+
+* **Remove Added Files**: Navigate to `tf/cfg/` and delete the **_my_configs** folder, all of the [class].cfg files (e.g., `scout.cfg`, `medic.cfg`, ...), and the **autoexec.cfg** file. **Do not delete the entire cfg folder**, as it contains essential default game files.
+* **Remove Custom Assets**: Delete any folders or files you added to `tf/custom/` but keep `custom/workshop/` folder.
+* **Reset Launch Options**: Remove the custom strings from your Steam Launch Options.
+
+---
+
+## 📜 Credits
+
+### **HUD Development**
+* **Scoutman01**: For making the best [HUD](https://github.com/Scoutman01/community-hud-updated) in TF2.
+* **Flame**: Author of flameHUD and CommunityHUD.
+* **povohat**: Author of PVHUD and CommunityHUD.
+* **yamahadodger**: Author of Community HUD Resurrection.
+* **Hypnotize**: HUD guides, default HUD files, crosshairs, and updated HUD components.
+* **Sinders**: Author of e.v.e HUD.
+* **Snowshoe**: Menu layouts and Community HUD fixes.
+* **Thespikedballofdoom**: Closed captions.
+* **DougieDoodles**: 2013 item borders, colors, and HUD guides.
+* **raysfire**: Educational YouTube tutorials for HUD modification.
+
+### **Configuration & Logic**
+* **mastercomfig**: Core research and commands for graphics and performance optimization.
+* **cfg.tf**: Logic templates for networking and modular configuration commands.
