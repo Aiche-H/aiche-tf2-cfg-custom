@@ -1,6 +1,4 @@
 # 🛠️ TF2 Custom Config: Technical Readme
-Here is the clean Markdown version for your `README.md`. I've formatted it to look sharp on any Markdown viewer while keeping your exact instructions.
-
 ## 🛠️ User Instructions: Steam Launch Options
 
 To ensure this configuration works perfectly, right-click **Team Fortress 2** in Steam → **Properties** → **Launch Options** and paste the following settings:
