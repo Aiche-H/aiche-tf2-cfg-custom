@@ -63,18 +63,6 @@ A modular Team Fortress 2 configuration designed to maximize performance, stabil
 
 ## 📜 Credits
 
-### **HUD Development**
-* **Scoutman01**: For making the best [HUD](https://github.com/Scoutman01/community-hud-updated) in TF2.
-* **Flame**: Author of flameHUD and CommunityHUD.
-* **povohat**: Author of PVHUD and CommunityHUD.
-* **yamahadodger**: Author of Community HUD Resurrection.
-* **Hypnotize**: HUD guides, default HUD files, crosshairs, and updated HUD components.
-* **Sinders**: Author of e.v.e HUD.
-* **Snowshoe**: Menu layouts and Community HUD fixes.
-* **Thespikedballofdoom**: Closed captions.
-* **DougieDoodles**: 2013 item borders, colors, and HUD guides.
-* **raysfire**: Educational YouTube tutorials for HUD modification.
-
 ### **Configuration & Logic**
 * **mastercomfig**: Core research and commands for graphics and performance optimization.
 * **cfg.tf**: Logic templates for networking and modular configuration commands.
