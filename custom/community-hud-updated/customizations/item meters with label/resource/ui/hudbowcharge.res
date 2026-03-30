@@ -1,0 +1,68 @@
+"resource/ui/hudbowcharge.res"
+{
+	"ChargeMeter"
+	{
+		"ControlName"		"ContinuousProgressBar"
+		"fieldName"			"ChargeMeter"
+		"visible"			"0"	// the huntsman meter is also controlled by hudemomancharge.res
+		"enabled"			"1"
+		"xpos"				"10"
+		"ypos"				"0"
+		"zpos"				"2"
+		"wide"				"130"
+		"tall"				"8"
+		"xpos_minmode"		"2"
+		"ypos_minmode"		"0"
+		"zpos_minmode"		"2"
+		"wide_minmode"		"55"
+		"tall_minmode"		"8"
+	}
+
+	"BG"
+	{
+		"ControlName"				"ImagePanel"
+		"fieldName"					"BG"
+		"xpos"						"140"
+		"ypos"						"0"
+		"zpos"						"0"
+		"wide"						"45"
+		"tall"						"10"
+		"autoResize"				"0"
+		"pinCorner"					"0"
+		"visible"					"1"
+		"visible_minmode"			"0"
+		"enabled"					"1"
+		"fillcolor"					"25 25 25 255"
+		"PaintBackgroundType"		"0"
+	}
+
+	"ItemEffectMeterLabel"
+	{
+		"ControlName"				"CExLabel"
+		"fieldName"					"ItemEffectMeterLabel"
+		"font"						"HudFontSmallest"
+		"font_minmode"				"Default"
+		"xpos"						"143"
+		"ypos"						"-2"
+		"xpos_minmode"				"2"
+		"ypos_minmode"				"0"
+		"wide_minmode"				"55"
+		"tall_minmode"				"8"
+		"zpos"						"6"
+		"wide"						"45"
+		"tall"						"15"
+		"autoResize"				"1"
+		"pinCorner"					"2"
+		"visible"					"1"
+		"visible_minmode"			"0"	// can't hide the "Charge" label from hudemomancharge.res
+		"enabled"					"1"
+		"enabled_minmode"			"0"
+		"tabPosition"				"5"
+		"labelText"					"#TF_Weapon_CompoundBow"
+		"textAlignment"				"west"
+		"textAlignment_minmode"		"center"
+		"dulltext"					"0"
+		"brighttext"				"1"
+		"fgcolor"					"255 255 255 255"
+	}
+}
