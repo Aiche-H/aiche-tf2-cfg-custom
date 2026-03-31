@@ -8,7 +8,7 @@ A modular Team Fortress 2 configuration designed to maximize performance, stabil
     * **autoexec.cfg**: The master file that loads everything else on startup.
     * **_my_configs/**: A dedicated subfolder containing your core logic (Binds, Graphics, Network, etc.).
     * **[class].cfg files** Individual files for each of the nine classes (e.g., `scout.cfg`, `medic.cfg`).
-* **custom/**: Houses all external modifications, including custom sounds
+* **custom/**: Houses all external modifications
 
 ---
 
