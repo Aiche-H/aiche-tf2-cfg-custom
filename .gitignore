@@ -1,1 +1,2 @@
-lighthud/
+# ignore hud
+*[Hh][Uu][Dd]/
